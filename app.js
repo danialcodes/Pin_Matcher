@@ -1,14 +1,15 @@
-function makeRandom() {
-    const rand = Math.round(Math.random() * 10000);
+function makeRandom(size) {
+    let rand = Math.round(Math.random() * 10000) + '';
+    if (rand.length != size){
+        return makeRandom(size);
+    }
     return rand;
 }
 function generate(pin) {
     const pinBox = document.getElementById('generated_pin');
     pinBox.value = pin;
 }
-// function getElement(id){
-//    return (id);
-// }
+
 function updateUserInput(val) {
     const userInputField = document.getElementById('userInputField');
     const userInputText = userInputField.value;
@@ -25,7 +26,7 @@ function updateUserInput(val) {
 
 
 document.getElementById('generate_btn').addEventListener('click', function (e) {
-    const randNum = makeRandom();
+    const randNum = makeRandom(4);
     generate(randNum);
 });
 
